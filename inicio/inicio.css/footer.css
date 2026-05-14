@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap');
+
+:root {
+    --rojo: #FF0400;
+    --rojo-dark: #CC0300;
+}
+
+/* ============================================================
+   FOOTER — fondo rojo, todo el texto en blanco
+   ============================================================ */
+.pie {
+    background: var(--rojo);
+    color: rgba(255,255,255,.9);
+}
+
+.pie-contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 52px 40px 44px;
+    border-bottom: 1px solid rgba(255,255,255,.2);
+}
+
+.pie-columna h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: #fff;
+    margin: 0 0 12px;
+    font-weight: 400;
+}
+
+/* h4 en blanco con letra espaciada — contrasta bien sobre rojo */
+.pie-columna h4 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 0 14px;
+}
+
+.pie-columna p {
+    font-size: 13px;
+    line-height: 1.75;
+    color: rgba(255,255,255,.8);
+    margin: 0;
+}
+
+.pie-columna a {
+    display: block;
+    color: rgba(255,255,255,.75);
+    text-decoration: none;
+    font-size: 13px;
+    margin-bottom: 8px;
+    transition: color .2s;
+}
+.pie-columna a:hover { color: #fff; }
+
+/* Suscripción — input semitransparente blanco, botón blanco con texto rojo */
+.suscripcion { display: flex; gap: 6px; }
+
+.suscripcion input {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid rgba(255,255,255,.35);
+    background: rgba(255,255,255,.15);
+    color: #fff;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    outline: none;
+    transition: border-color .2s, background .2s;
+}
+.suscripcion input:focus {
+    border-color: #fff;
+    background: rgba(255,255,255,.22);
+}
+.suscripcion input::placeholder { color: rgba(255,255,255,.55); }
+
+/* Botón blanco con texto rojo — contraste perfecto sobre fondo rojo */
+.suscripcion button {
+    background: #fff;
+    border: none;
+    color: var(--rojo);
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    white-space: nowrap;
+    transition: background .2s, color .2s;
+}
+.suscripcion button:hover {
+    background: rgba(255,255,255,.88);
+    color: var(--rojo-dark);
+}
+
+.pie-inferior {
+    text-align: center;
+    padding: 18px 40px;
+    font-size: 12px;
+    color: rgba(255,255,255,.55);
+    border-top: 1px solid rgba(255,255,255,.2);
+}
+.pie-inferior p { margin: 0; }
+

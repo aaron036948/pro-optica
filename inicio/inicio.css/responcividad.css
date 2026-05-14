@@ -1,0 +1,116 @@
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+    .boton-menu {
+        display: block;
+    }
+
+    .barra-superior {
+        display: none;
+    }
+
+    .categorias {
+        display: none;
+    }
+
+    .barra-principal {
+        display: grid;
+        grid-template-columns: auto auto 1fr auto;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .boton-menu {
+        grid-column: 1;
+    }
+
+    .buscador {
+        grid-column: 2;
+    }
+
+    .centro {
+        grid-column: 3;
+        text-align: center;
+    }
+
+    .iconos {
+        grid-column: 4;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .iconos img,
+    .icono {
+        width: 22px;
+    }
+
+    .contenedor-buscador {
+        order: 2;
+    }
+
+    .buscador-expandido {
+        padding: 0 15px;
+    }
+
+    .boton-atras {
+        font-size: 24px;
+        margin-right: 10px;
+    }
+
+    .entrada-busqueda-completa {
+        font-size: 16px;
+    }
+
+    .pie-contenedor {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .contenedor-principal {
+        padding: 40px 15px;
+    }
+
+      .titulo-seccion {
+        font-size: 22px;
+    }
+
+    .grid-productos {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 15px;
+    }
+
+    .producto-card img {
+        height: 150px;
+    }
+
+     .hero-slider {
+        height: 45vh; /* Ajuste proporcional para móviles */
+    }
+    
+     .prev, .next {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+        left: 5px;
+    }
+    .next { right: 5px; left: auto; }
+    
+    /* FOOTER FINAL */
+        .pie-contenedor {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .pie-columna-info p {
+        margin: 0 auto;
+    }
+    
+    .suscripcion-formulario {
+        justify-content: center;
+    }
+}

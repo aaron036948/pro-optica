@@ -1,0 +1,278 @@
+/* HEADER */
+header {
+    background: transparent;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
+    transition: background-color 0.4s ease;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8); /* Sombra más fuerte para visibilidad */
+}
+
+header.scrolled {
+    background-color: #FF0400 !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    text-shadow: none;
+}
+
+/* Estilo para que los elementos del header se vean bien sobre el slider */
+.barra-superior, .barra-principal {
+    position: relative;
+    z-index: 1001;
+}
+
+/* TOGGLE Y CAPA OSCURA */
+#menu-toggle {
+    display: none;
+}
+
+.capa-oscura {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+#menu-toggle:checked ~ .capa-oscura {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* MENÚ MÓVIL */
+.menu-movil {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100%;
+    background: white;
+    color: black;
+    padding: 60px 20px 25px 20px; 
+    transition: 0.3s;
+    z-index: 2001; 
+}
+
+#menu-toggle:checked ~ .menu-movil {
+    left: 0;
+}
+
+.cerrar {
+    font-size: 35px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FF0400;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    transition: transform 0.2s;
+    position: absolute; /* Cambiado a absoluto para fijarlo arriba */
+    top: 10px;
+    right: 15px;
+    z-index: 3000; 
+    background: rgba(255,255,255,0.9);
+    border-radius: 50%;
+}
+
+.cerrar:hover {
+    transform: scale(1.2);
+}
+
+/* BOTÓN MENÚ */
+.boton-menu {
+    display: none;
+    font-size: 28px;
+    padding: 10px;
+}
+
+/* MENU INTERNO */
+.menu-categorias {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.menu-categorias a,
+.menu-extra a {
+    text-decoration: none;
+    color: black;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.menu-extra {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* REDES */
+.redes-sociales {
+    display: flex;
+    gap: 10px;
+}
+
+.redes-sociales img {
+    width: 22px;
+    filter: brightness(0) invert(1);
+}
+
+/* 👇 CLAVE: visibles en menú móvil */
+.redes-sociales-movil {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.redes-sociales-movil img {
+    width: 22px;
+    filter: none; /* 🔥 ESTA LÍNEA SOLUCIONA EL PROBLEMA */
+}
+
+/* BARRA SUPERIOR */
+.barra-superior {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+}
+
+.menu-superior {
+    display: flex;
+    gap: 25px;
+}
+
+.menu-superior a {
+    color: white;
+    text-decoration: none;
+}
+
+/* BARRA PRINCIPAL */
+.barra-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    flex-wrap: wrap;
+}
+
+/* BUSCADOR */
+.contenedor-buscador {
+    display: flex;
+    align-items: center;
+}
+
+.buscador {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.icono {
+    width: 26px;
+    filter: brightness(0) invert(1);
+    transition: transform 0.3s ease;
+}
+
+.buscador:hover .icono {
+    transform: scale(1.1);
+}
+
+/* BUSCADOR EXPANDIDO (Cubre el header) */
+.buscador-expandido {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FF0400; /* Color rojo para integrarse con el header scrolled */
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+header:not(.scrolled) .buscador-expandido {
+    background-color: rgba(0, 0, 0, 0.9); /* Más oscuro si está sobre el slider */
+}
+
+.buscador-expandido.activo {
+    opacity: 1;
+    visibility: visible;
+}
+
+.boton-atras {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.entrada-busqueda-completa {
+    flex: 1;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid white;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    outline: none;
+}
+
+.entrada-busqueda-completa::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.icono-busqueda {
+    width: 24px;
+    margin-left: 15px;
+    filter: brightness(0) invert(1);
+}
+
+/* CENTRO */
+.centro {
+    text-align: center;
+}
+
+.logo {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.categorias {
+    display: flex;
+    gap: 25px;
+}
+
+.categorias a {
+    color: white;
+    text-decoration: none;
+}
+
+/* ICONOS */
+.iconos {
+    display: flex;
+    gap: 15px;
+}
+
+.iconos img {
+    width: 26px;
+    filter: brightness(0) invert(1);
+}
