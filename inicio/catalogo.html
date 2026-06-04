@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Óptica Tendencia Urbana</title>
+
+    <link rel="stylesheet" href="inicio.css/estilos.css">
+    <link rel="stylesheet" href="inicio.css/header.css">
+    <link rel="stylesheet" href="inicio.css/slider.css">
+    <link rel="stylesheet" href="inicio.css/footer.css">
+    <link rel="stylesheet" href="inicio.css/responcividad.css">
+    <link rel="stylesheet" href="inicio.css/estilo-catalogo.css">
+</head>
+
+<body >
+
+<header id="header-sitio"></header>
+
+<!-- 🔥 SLIDER DE ANCHO COMPLETO -->
+<section class="hero-slider">
+    <img src="img/presentacion/imagen1.jpg" class="slide active">
+    <img src="img/presentacion/imagen2.jpg" class="slide">
+    <img src="img/presentacion/imagen3.jpg" class="slide">
+
+    <button class="prev">❮</button>
+    <button class="next">❯</button>
+</section>
+
+<main class="contenedor-principal">
+    
+    
+
+  <!-- SECCIÓN DE CATÁLOGO COMPLETO -->
+<section id="todocata" class="class-section">
+    
+    <!-- APARTADO: OFERTAS -->
+    <h2 class="titulo-apartado">Grandes Novedades</h2>
+    <div class="apartado-especial grid-ofertas">
+        <article class="class-catalogo">
+            <img src="img/gafas-unisex/001.webp" alt="Lente en Oferta">
+            <div class="etiqueta-oferta">OFERTA -50%</div>
+            <h3>URBAN STYLE</h3>
+        </article>
+        <article class="class-catalogo">
+            <img src="img/gafas-unisex/003.webp" alt="Lente en Oferta">
+            <div class="etiqueta-oferta">OFERTA -45%</div>
+            <h3>CITY LIGHTS</h3>
+        </article>
+        <article class="class-catalogo">
+            <img src="img/gafas-unisex/005.webp" alt="Lente en Oferta">
+            <div class="etiqueta-oferta">OFERTA -45%</div>
+            <h3>NIGHT DRIVE</h3>
+        </article>
+    </div>
+
+    <!-- APARTADO: EN REBAJA -->
+    <h2 class="titulo-apartado">Ofertas</h2>
+    <div class="apartado-especial grid-rebajas">
+        <article class="class-catalogo">
+            <img src="img/gafas-varones/negros.webp" alt="Lente en Rebaja">
+            <div class="etiqueta-rebaja">REBAJA</div>
+            <h3>CLASSIC BLACK</h3>
+        </article>
+        <article class="class-catalogo">
+            <img src="img/gafas-mujeres/90ROJO.webp" alt="Lente en Rebaja">
+            <div class="etiqueta-rebaja">REBAJA</div>
+            <h3>RED PASSION</h3>
+        </article>
+    </div>
+
+    <hr class="separador-seccion">
+
+    <!-- GRILLA DE COLECCIONES -->
+    <h2 class="titulo-apartado">Nuestras Colecciones</h2>
+    <div class="grid-principal">
+        <div class="class-catalogo">
+            <a class="link-card" href="catalogo-MASCULINO.html">
+                <img src="img/gafas-varones/WESTON-DORADA-CAFE.webp" alt="Gafas para Hombres">
+                <h3>HOMBRES</h3>
+            </a>
+        </div>
+        <div class="class-catalogo">
+            <a class="link-card" href="catalogo-FEMENINO.html">
+                <img src="img/gafas-mujeres/90-ROJO.webp" alt="Gafas para Mujeres">
+                <h3>MUJERES</h3>
+            </a>
+        </div>
+        <div class="class-catalogo">
+            <a class="link-card" href="catalogo-INFANTIL.html">
+                <img src="img/gafas-ninos/0004.webp" alt="Gafas Infantiles">
+                <h3>INFANTILES</h3>
+            </a>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="pie">
+    <div class="pie-contenedor">
+
+        <div class="pie-columna">
+            <h3>ÓPTICA TENDENCIA URBANA</h3>
+            <p>Lentes modernos, calidad garantizada y estilo urbano.</p>
+        </div>
+
+        <div class="pie-columna">
+            <h4>Tienda</h4>
+            <a href="catalogo.html">Catálogo</a>
+            <a href="#">Novedades</a>
+            <a href="#">Ofertas</a>
+        </div>
+
+        <div class="pie-columna">
+            <h4>Ayuda</h4>
+            <a href="#">Contacto</a>
+            <a href="#">Envíos</a>
+            <a href="#">Devoluciones</a>
+            <a href="#">Privacidad</a>
+        </div>
+
+        <div class="pie-columna">
+            <h4>Suscríbete</h4>
+            <form class="suscripcion" id="formSuscripcion" novalidate>
+                <label for="emailSuscripcion" class="sr-only">Correo electrónico</label>
+                <input
+                    type="email"
+                    id="emailSuscripcion"
+                    name="email"
+                    placeholder="correo@gmail.com"
+                    required
+                    autocomplete="email"
+                >
+                <button type="submit">OK</button>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="pie-inferior">
+        <p>&copy; 2026 Óptica Tendencia Urbana</p>
+    </div>
+
+</footer>
+
+<script src="inicio.js/Catalogo.js"></script>
+</body>
+</html>
