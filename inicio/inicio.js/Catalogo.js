@@ -1,3 +1,147 @@
+const menuHTML = `
+<input type="checkbox" id="menu-toggle"><!-- ACTIVAR MENU-MOVIl -->
+    <div class="capa-oscura"></div>
+
+    <div class="menu-movil" id="menu-desplegable">
+        <label for="menu-toggle" class="cerrar" id="boton-cerrar-menu">✕</label>
+
+            <!-- contenido de menu-movil -->
+            <nav class="menu-categorias">
+                <a href="./index.html">TODOS</a>
+                <a href="./catalogo-FEMENINO.html">FEMENINO</a>
+                <a href="./catalogo-MASCULINO.html">MASCULINO</a>
+                <a href="./catalogo-INFANTIL.html">NIÑOS</a>
+                <a href="#">CONÓCENOS</a>
+            </nav>
+            <nav class="menu-extra">
+                <a href="index.html">Inicio</a>
+                <a href="catalogo.html">Catálogo</a>
+                <a href="#">Contacto</a>
+                <a href="buscar.html">Buscar</a>
+            </nav>
+
+            <nav class="redes-sociales-movil">
+                <a href="#"><img src="iconos/instagram.png" alt="Instagram"></a>
+                <a href="#"><img src="iconos/facebook.png" alt="Facebook"></a>
+            </nav>
+    </div>
+
+    <div class="barra-superior">
+        <nav class="menu-superior">
+            <a href="index.html">Inicio</a>
+            <a href="catalogo.html">Catálogo</a>
+            <a href="#">Contacto</a>
+            <a href="buscar.html">Buscar</a>
+        </nav>
+
+        <nav class="redes-sociales">
+            <a href="https://instagram.com/tu_usuario" target="_blank" rel="noopener noreferrer">
+                <img src="iconos/instagram.png" alt="Instagram">
+            </a>
+            <a href="https://facebook.com/tu_pagina" target="_blank" rel="noopener noreferrer">
+                <img src="iconos/facebook.png" alt="Facebook">
+            </a>
+        </nav>
+    </div>
+
+    <div class="barra-principal">
+
+        <label for="menu-toggle" class="boton-menu">☰</label>
+
+        <div class="contenedor-buscador">
+            <div class="buscador" id="activar-busqueda">
+                <img src="iconos/lupa.png" class="icono">
+            </div>
+
+            <!-- Capa del buscador que cubre el header -->
+            <div class="buscador-expandido" id="buscador-pantalla-completa">
+                <button class="boton-atras" id="cerrar-busqueda">←</button>
+                <input type="text" placeholder="Buscar productos..." class="entrada-busqueda-completa">
+                <img src="iconos/lupa.png" class="icono-busqueda">
+            </div>
+        </div>
+
+        <div class="centro">
+            <h2 class="logo">ÓPTICA TENDENCIA URBANA</h2>
+
+            <nav class="categorias">
+                <a href="./catalogo.html">TODOS</a>
+                <a href="./catalogo-FEMENINO.html">FEMENINO</a>
+                <a href="./catalogo-MASCULINO.html">MASCULINO</a>
+                <a href="./catalogo-INFANTIL.html">NIÑOS</a>
+                <a href="#">CONÓCENOS</a>
+            </nav>
+        </div>
+
+        <div class="iconos">
+            <img src="iconos/favorito.png">
+            <img src="iconos/login.png">
+            <img src="iconos/compra.png">
+        </div>
+
+    </div>
+`;
+
+const lugarDondeInsertar = document.getElementById("header-sitio");
+lugarDondeInsertar.innerHTML = menuHTML;
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const footerinx = document.getElementById("footer-sitio");
+    if (footerinx) {
+        footerinx.innerHTML = `
+            <div class="pie-contenedor">
+
+                <div class="pie-columna">
+                    <h3>ÓPTICA TENDENCIA URBANA</h3>
+                    <p>Lentes modernos, calidad garantizada y estilo urbano.</p>
+                </div>
+
+                <div class="pie-columna">
+                    <h4>Tienda</h4>
+                    <a href="catalogo.html">Catálogo</a>
+                    <a href="#">Novedades</a>
+                    <a href="#">Ofertas</a>
+                </div>
+
+                <div class="pie-columna">
+                    <h4>Ayuda</h4>
+                    <a href="#">Contacto</a>
+                    <a href="#">Envíos</a>
+                    <a href="#">Devoluciones</a>
+                    <a href="#">Privacidad</a>
+                </div>
+
+                <div class="pie-columna">
+                    <h4>Suscríbete</h4>
+                    <form class="suscripcion" id="formSuscripcion" action="https://api.web3forms.com/submit" method="POST">
+                        <!-- Tu clave de Web3Forms -->
+                        <input type="hidden" name="access_key" value="df262d73-b75b-4aea-81a5-ef2c2851c117">
+                        
+                        <!-- Configuración opcional: Título del correo que te llegará -->
+                        <input type="hidden" name="subject" value="Nueva Suscripción - Óptica Tendencia Urbana">
+
+                        <label for="emailSuscripcion" class="sr-only">Correo electrónico</label>
+                        <input
+                            type="email"
+                            id="emailSuscripcion"
+                            name="email"
+                            placeholder="correo@gmail.com"
+                            required
+                            autocomplete="email"
+                        >
+                        <button type="submit">OK</button>
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="pie-inferior">
+                <p>&copy; 2026 Óptica Tendencia Urbana</p>
+            </div>
+        `;
+    }
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('modal-lupa');
     const imgZoom = document.getElementById('imagen-zoom');
@@ -47,100 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
-
-
-
-
-
-
-
-// 1. Guardamos todo tu HTML original idéntico en una variable de texto
-const menuHTML = `
-<input type="checkbox" id="menu-toggle"><!-- ACTIVAR MENU-MOVIl -->
-    <div class="capa-oscura"></div>
-
-    <div class="menu-movil" id="menu-desplegable">
-        <label for="menu-toggle" class="cerrar" id="boton-cerrar-menu">✕</label>
-
-            <!-- contenido de menu-movil -->
-            <nav class="menu-categorias">
-                <a href="./index.html">TODOS</a>
-                <a href="./catalogo-FEMENINO.html">FEMENINO</a>
-                <a href="./catalogo-MASCULINO.html">MASCULINO</a>
-                <a href="./catalogo-INFANTIL.html">NIÑOS</a>
-                <a href="#">CONÓCENOS</a>
-            </nav>
-            <nav class="menu-extra">
-                <a href="index.html">Inicio</a>
-                <a href="catalogo.html">Catálogo</a>
-                <a href="#">Contacto</a>
-                <a href="buscar.html">Buscar</a>
-            </nav>
-
-            <nav class="redes-sociales-movil">
-                <a href="#"><img src="iconos/instagram.png" alt="Instagram"></a>
-                <a href="#"><img src="iconos/facebook.png" alt="Facebook"></a>
-            </nav>
-    </div>
-
-    <div class="barra-superior">
-        <nav class="menu-superior">
-            <a href="index.html">Inicio</a>
-            <a href="catalogo.html">Catálogo</a>
-            <a href="#">Contacto</a>
-            <a href="buscar.html">Buscar</a>
-        </nav>
-
-        <nav class="redes-sociales">
-            <img src="iconos/instagram.png">
-            <img src="iconos/facebook.png">
-        </nav>
-    </div>
-
-    <div class="barra-principal">
-
-        <label for="menu-toggle" class="boton-menu">☰</label>
-
-        <div class="contenedor-buscador">
-            <div class="buscador" id="activar-busqueda">
-                <img src="iconos/lupa.png" class="icono">
-            </div>
-
-            <!-- Capa del buscador que cubre el header -->
-            <div class="buscador-expandido" id="buscador-pantalla-completa">
-                <button class="boton-atras" id="cerrar-busqueda">←</button>
-                <input type="text" placeholder="Buscar productos..." class="entrada-busqueda-completa">
-                <img src="iconos/lupa.png" class="icono-busqueda">
-            </div>
-        </div>
-
-        <div class="centro">
-            <h2 class="logo">ÓPTICA TENDENCIA URBANA</h2>
-
-            <nav class="categorias">
-                <a href="./catalogo.html">TODOS</a>
-                <a href="./catalogo-FEMENINO.html">FEMENINO</a>
-                <a href="./catalogo-MASCULINO.html">MASCULINO</a>
-                <a href="./catalogo-INFANTIL.html">NIÑOS</a>
-                <a href="#">CONÓCENOS</a>
-            </nav>
-        </div>
-
-        <div class="iconos">
-            <img src="iconos/favorito.png">
-            <img src="iconos/login.png">
-            <img src="iconos/compra.png">
-        </div>
-
-    </div>
-`;
-
-// 2. Buscamos el lugar en el HTML usando su ID único
-const lugarDondeInsertar = document.getElementById("header-sitio");
-
-// 3. Insertamos el menú directamente en ese lugar
-lugarDondeInsertar.innerHTML = menuHTML;
+});
 
 
 

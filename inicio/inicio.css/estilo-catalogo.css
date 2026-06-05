@@ -150,46 +150,4 @@
         right: 15px;
     }
 }
-
-/* MODAL DE LUPA */
-.modal-zoom {
-    display: none;
-    position: fixed;
-    z-index: 3000; /* Asegura que esté por encima de todo [cite: 8] */
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.9);
-    justify-content: center;
-    align-items: center;
-}
-
-.contenedor-lupa {
-    width: 90%;
-    max-width: 700px;
-    overflow: hidden; /* Necesario para que el zoom no se salga del cuadro */
-    background: #fff;
-    border-radius: 10px;
-    cursor: zoom-in;
-}
-
-#imagen-zoom {
-    width: 100%;
-    transition: transform 0.4s ease;
-    display: block;
-}
-
-/* EFECTO LUPA: Zoom 2x al pasar el mouse por la imagen del modal */
-.contenedor-lupa:hover #imagen-zoom {
-    transform: scale(2);
-}
-
-.cerrar-lupa {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: white;
-    font-size: 50px;
-    font-weight: bold;
-    cursor: pointer;
-    user-select: none;
-}
+ 
