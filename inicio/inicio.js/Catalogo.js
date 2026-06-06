@@ -11,12 +11,12 @@ const menuHTML = `
                 <a href="./catalogo-FEMENINO.html">FEMENINO</a>
                 <a href="./catalogo-MASCULINO.html">MASCULINO</a>
                 <a href="./catalogo-INFANTIL.html">NIÑOS</a>
-                <a href="#">CONÓCENOS</a>
+                <a href="./coontacto.html">CONÓCENOS</a>
             </nav>
             <nav class="menu-extra">
                 <a href="index.html">Inicio</a>
                 <a href="catalogo.html">Catálogo</a>
-                <a href="#">Contacto</a>
+                <a href="./coontacto.html">Contacto</a>
                 <a href="buscar.html">Buscar</a>
             </nav>
 
@@ -30,7 +30,7 @@ const menuHTML = `
         <nav class="menu-superior">
             <a href="index.html">Inicio</a>
             <a href="catalogo.html">Catálogo</a>
-            <a href="#">Contacto</a>
+            <a href="./coontacto.html">Contacto</a>
             <a href="buscar.html">Buscar</a>
         </nav>
 
@@ -69,7 +69,7 @@ const menuHTML = `
                 <a href="./catalogo-FEMENINO.html">FEMENINO</a>
                 <a href="./catalogo-MASCULINO.html">MASCULINO</a>
                 <a href="./catalogo-INFANTIL.html">NIÑOS</a>
-                <a href="#">CONÓCENOS</a>
+                <a href="./coontacto.html">CONÓCENOS</a>
             </nav>
         </div>
 
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 <div class="pie-columna">
                     <h4>Ayuda</h4>
-                    <a href="#">Contacto</a>
+                    <a href="./coontacto.html">Contacto</a>
                     <a href="#">Envíos</a>
                     <a href="#">Devoluciones</a>
                     <a href="#">Privacidad</a>
