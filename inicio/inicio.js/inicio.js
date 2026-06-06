@@ -138,3 +138,137 @@ window.onload = function () {
     });
 
 };
+
+// ============================================================
+//  PWA — Registro del Service Worker, instalación y estados
+//  Añadido automáticamente — no modificar el bloque anterior
+// ============================================================
+
+// ── 1. Registro del Service Worker ───────────────────────────
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => {
+        console.log('[PWA] Service Worker registrado. Scope:', reg.scope);
+
+        // Detectar nueva versión disponible
+        reg.addEventListener('updatefound', () => {
+          const sw = reg.installing;
+          sw.addEventListener('statechange', () => {
+            if (sw.state === 'installed' && navigator.serviceWorker.controller) {
+              _pwa_mostrarActualizacion();
+            }
+          });
+        });
+      })
+      .catch(err => console.error('[PWA] Error al registrar SW:', err));
+  });
+}
+
+// ── 2. Banner "Instalar app" (Add to Home Screen) ────────────
+let _pwa_deferredPrompt = null;
+
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  _pwa_deferredPrompt = e;
+  _pwa_mostrarBanner();
+});
+
+window.addEventListener('appinstalled', () => {
+  _pwa_ocultarBanner();
+  _pwa_deferredPrompt = null;
+  console.log('[PWA] App instalada correctamente.');
+});
+
+function _pwa_mostrarBanner() {
+  if (document.getElementById('pwa-install-banner')) return;
+
+  const banner = document.createElement('div');
+  banner.id = 'pwa-install-banner';
+  banner.innerHTML = `
+    <div style="
+      position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
+      background:#1a1a1a; color:#fff;
+      padding:14px 18px; border-radius:14px;
+      box-shadow:0 6px 24px rgba(0,0,0,.35);
+      display:flex; align-items:center; gap:14px;
+      z-index:9999; font-family:inherit;
+      max-width:360px; width:calc(100% - 32px);
+      animation:_pwaUp .4s ease;">
+      <span style="font-size:28px;flex-shrink:0;">👓</span>
+      <div style="flex:1;line-height:1.4;">
+        <strong style="font-size:.9rem;">Instala la app</strong><br>
+        <span style="font-size:.78rem;opacity:.75;">Accede desde tu pantalla de inicio</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button id="pwa-btn-instalar" style="background:#fff;color:#1a1a1a;border:none;
+          padding:6px 14px;border-radius:7px;cursor:pointer;font-weight:700;font-size:.82rem;">
+          Instalar</button>
+        <button id="pwa-btn-cerrar" style="background:transparent;color:rgba(255,255,255,.6);
+          border:1px solid rgba(255,255,255,.25);
+          padding:4px 14px;border-radius:7px;cursor:pointer;font-size:.78rem;">
+          Ahora no</button>
+      </div>
+    </div>
+    <style>
+      @keyframes _pwaUp {
+        from { transform:translateX(-50%) translateY(60px);opacity:0; }
+        to   { transform:translateX(-50%) translateY(0);opacity:1; }
+      }
+    </style>`;
+  document.body.appendChild(banner);
+
+  document.getElementById('pwa-btn-instalar').addEventListener('click', async () => {
+    if (!_pwa_deferredPrompt) return;
+    _pwa_deferredPrompt.prompt();
+    await _pwa_deferredPrompt.userChoice;
+    _pwa_deferredPrompt = null;
+    _pwa_ocultarBanner();
+  });
+  document.getElementById('pwa-btn-cerrar').addEventListener('click', _pwa_ocultarBanner);
+}
+
+function _pwa_ocultarBanner() {
+  const b = document.getElementById('pwa-install-banner');
+  if (b) b.remove();
+}
+
+// ── 3. Banner "Nueva versión disponible" ─────────────────────
+function _pwa_mostrarActualizacion() {
+  const n = document.createElement('div');
+  n.innerHTML = `
+    <div style="position:fixed;top:14px;right:14px;background:#16a34a;color:#fff;
+      padding:11px 16px;border-radius:10px;box-shadow:0 4px 16px rgba(0,0,0,.25);
+      z-index:9999;font-family:inherit;font-size:.88rem;
+      display:flex;align-items:center;gap:12px;">
+      🔄 Nueva versión disponible
+      <button onclick="location.reload()" style="background:#fff;color:#16a34a;border:none;
+        padding:5px 12px;border-radius:6px;cursor:pointer;font-weight:700;font-size:.82rem;">
+        Actualizar</button>
+    </div>`;
+  document.body.appendChild(n);
+}
+
+// ── 4. Indicador visual de estado de conexión ────────────────
+function _pwa_indicadorConexion(online) {
+  let el = document.getElementById('pwa-status-bar');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'pwa-status-bar';
+    el.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9998;'
+      + 'padding:7px;text-align:center;font-family:inherit;'
+      + 'font-size:.84rem;font-weight:600;transition:opacity .3s;';
+    document.body.prepend(el);
+  }
+  if (online) {
+    el.textContent = '✅  Conexión restaurada';
+    el.style.cssText += 'background:#16a34a;color:#fff;';
+    setTimeout(() => el.remove(), 3000);
+  } else {
+    el.textContent = '⚠️  Sin conexión — modo offline activo';
+    el.style.cssText += 'background:#dc2626;color:#fff;';
+  }
+}
+
+window.addEventListener('online',  () => _pwa_indicadorConexion(true));
+window.addEventListener('offline', () => _pwa_indicadorConexion(false));
