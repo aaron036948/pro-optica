@@ -40,28 +40,27 @@
     <h1 class="titulo-principal">ÓPTICA POUKER</h1>
 
     <!-- Formulario -->
-    <section class="contenedor-formulario">
+    <form class="contenedor-formulario" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="952e5106-5539-42e5-a4d4-102f0ea29089">
+        <input type="hidden" name="redirect" value="gracias.html">
+        <input type="hidden" name="subject" value="Nuevo Mensaje de Contacto - Óptica Tendencia Urbana">
         <p class="texto-formulario">
             Completa tus datos y nuestro equipo te responderá lo antes posible.
         </p>
-
         <div class="fila-formulario">
-            <input type="text" class="input-form" placeholder="Nombre">
-            <input type="email" class="input-form" placeholder="Correo electrónico">
+            <input type="text" class="input-form" name="name" placeholder="Nombre" required>
+            <input type="email" class="input-form" name="email" placeholder="Correo electrónico" required>
         </div>
-
         <div class="fila-formulario">
-            <input type="text" class="input-form" placeholder="Número de teléfono (WhatsApp)">
+            <input type="text" class="input-form" name="whatsapp" placeholder="Número de teléfono (WhatsApp)">
         </div>
-
         <div class="fila-formulario">
-            <textarea class="textarea-form" placeholder="Mensaje"></textarea>
+            <textarea class="textarea-form" name="message" placeholder="Mensaje" required></textarea>
         </div>
-
         <button type="submit" class="btn-enviar">
-            <a href="gracias.html"> ENVIAR</a>
+            ENVIAR
         </button>
-    </section>
+    </form>
 
     <!-- Información -->
     <section class="contenedor-contacto">
@@ -81,6 +80,7 @@
 
 <!-- FOOTER -->
 <footer class="pie" id="footer-sitio"></footer>
+
 <script src="inicio.js/buscar.js"></script>
 <script src="inicio.js/Catalogo.js"></script>
 <script src="inicio.js/db.js"></script>
