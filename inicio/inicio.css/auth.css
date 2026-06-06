@@ -1,0 +1,354 @@
+/* ============================================================
+   auth.css — Estilos para login.html y registro.html
+   Óptica Tendencia Urbana
+   ============================================================ */
+
+/* ── Variables (deben coincidir con el resto del proyecto) ── */
+:root {
+    --rojo:       #e63946;
+    --negro:      #111111;
+    --blanco:     #ffffff;
+    --gris-claro: #f5f5f5;
+    --gris-medio: #cccccc;
+    --texto:      #222222;
+}
+
+/* ── Body ── */
+body {
+    background: var(--gris-claro);
+    font-family: 'DM Sans', sans-serif;
+    margin: 0;
+}
+
+/* ============================================================
+   PÁGINA COMPLETA — centrado vertical
+   ============================================================ */
+.auth-pagina {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-seccion {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+}
+
+/* ============================================================
+   TARJETA
+   ============================================================ */
+.auth-card {
+    background: var(--blanco);
+    width: 100%;
+    max-width: 460px;
+    border-top: 4px solid var(--rojo);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.10);
+    padding: 48px 44px 40px;
+}
+
+/* Tarjeta más ancha para registro (tiene más campos) */
+.auth-card--registro {
+    max-width: 520px;
+}
+
+/* ============================================================
+   ENCABEZADO DE LA TARJETA
+   ============================================================ */
+.auth-logo-link {
+    display: block;
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    color: var(--rojo);
+    text-decoration: none;
+    margin-bottom: 24px;
+    opacity: 0.7;
+    transition: opacity .2s;
+}
+.auth-logo-link:hover { opacity: 1; }
+
+.auth-titulo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.4rem;
+    letter-spacing: 2px;
+    color: var(--negro);
+    margin: 0 0 4px;
+}
+
+.auth-subtitulo {
+    font-size: 0.88rem;
+    color: #777;
+    margin: 0 0 6px;
+}
+
+.auth-linea {
+    width: 48px;
+    height: 3px;
+    background: var(--rojo);
+    margin-bottom: 28px;
+}
+
+/* ============================================================
+   MENSAJE GLOBAL (éxito / error)
+   ============================================================ */
+.auth-msg {
+    font-size: 0.85rem;
+    padding: 10px 14px;
+    margin-bottom: 18px;
+    display: none;
+    line-height: 1.4;
+}
+.auth-msg.ok    { background: #e8f5e9; color: #2e7d32; border-left: 3px solid #2e7d32; }
+.auth-msg.fallo { background: #fdecea; color: #c62828; border-left: 3px solid var(--rojo); }
+.auth-msg.show  { display: block; }
+
+/* ============================================================
+   CAMPOS
+   ============================================================ */
+.campo {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.campo label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--negro);
+}
+
+.campo input {
+    border: 1.5px solid var(--gris-medio);
+    padding: 12px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--texto);
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+    background: var(--blanco);
+    border-radius: 0;
+    -webkit-appearance: none;
+}
+
+.campo input:focus {
+    border-color: var(--negro);
+    box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.06);
+}
+
+.campo input.error {
+    border-color: var(--rojo);
+    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.08);
+}
+
+.campo-error {
+    font-size: 0.78rem;
+    color: var(--rojo);
+    min-height: 14px;
+}
+
+/* ============================================================
+   FILA DE DOS COLUMNAS (registro: correo + teléfono)
+   ============================================================ */
+.campos-fila {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 18px;
+}
+
+/* ============================================================
+   FORTALEZA DE CONTRASEÑA
+   ============================================================ */
+.fortaleza-barra {
+    display: flex;
+    gap: 4px;
+    margin-top: 6px;
+}
+
+.fortaleza-barra span {
+    flex: 1;
+    height: 3px;
+    background: var(--gris-medio);
+    transition: background .3s;
+}
+
+.fortaleza-texto {
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 4px;
+    min-height: 14px;
+}
+
+/* ============================================================
+   BOTÓN PRINCIPAL
+   ============================================================ */
+.btn-auth {
+    width: 100%;
+    background: var(--negro);
+    color: var(--blanco);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.05rem;
+    letter-spacing: 2px;
+    padding: 15px;
+    border: none;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background .2s, transform .1s;
+    border-radius: 0;
+}
+
+.btn-auth:hover  { background: var(--rojo); }
+.btn-auth:active { transform: scale(.98); }
+
+.btn-auth.cargando {
+    opacity: .7;
+    pointer-events: none;
+}
+
+/* ============================================================
+   SEPARADOR  ——— o ———
+   ============================================================ */
+.auth-sep {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 22px 0;
+    color: var(--gris-medio);
+    font-size: 0.8rem;
+}
+.auth-sep::before,
+.auth-sep::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gris-medio);
+}
+
+/* ============================================================
+   PIE DE TARJETA (enlace a registro / login)
+   ============================================================ */
+.auth-pie {
+    margin-top: 26px;
+    text-align: center;
+    font-size: 0.88rem;
+    color: #666;
+}
+
+.auth-pie a {
+    color: var(--negro);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1.5px solid var(--rojo);
+    padding-bottom: 1px;
+    transition: color .2s;
+}
+
+.auth-pie a:hover { color: var(--rojo); }
+
+/* ============================================================
+   TÉRMINOS Y CONDICIONES (registro)
+   ============================================================ */
+.terminos {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 0.82rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+.terminos input[type="checkbox"] {
+    margin-top: 2px;
+    accent-color: var(--negro);
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.terminos a {
+    color: var(--negro);
+    font-weight: 600;
+    text-decoration: underline;
+    transition: color .2s;
+}
+.terminos a:hover { color: var(--rojo); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+/* Tablet (≤ 768px) */
+@media (max-width: 768px) {
+    .auth-seccion {
+        padding: 40px 16px;
+        align-items: flex-start;
+    }
+
+    .auth-card {
+        padding: 40px 32px 36px;
+        max-width: 100%;
+    }
+
+    .auth-card--registro {
+        max-width: 100%;
+    }
+
+    .auth-titulo {
+        font-size: 2.1rem;
+    }
+}
+
+/* Móvil grande (≤ 560px) */
+@media (max-width: 560px) {
+    .auth-seccion {
+        padding: 28px 12px;
+    }
+
+    .auth-card {
+        padding: 32px 22px 28px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .auth-titulo {
+        font-size: 1.9rem;
+    }
+
+    /* La fila de dos columnas pasa a una sola columna */
+    .campos-fila {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .campo input {
+        font-size: 1rem;   /* evita zoom automático en iOS */
+        padding: 13px 14px;
+    }
+
+    .btn-auth {
+        padding: 16px;
+        font-size: 1rem;
+    }
+}
+
+/* Móvil pequeño (≤ 380px) */
+@media (max-width: 380px) {
+    .auth-card {
+        padding: 28px 16px 24px;
+    }
+
+    .auth-titulo {
+        font-size: 1.7rem;
+    }
+
+    .auth-pie {
+        font-size: 0.82rem;
+    }
+}

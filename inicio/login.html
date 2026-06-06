@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Óptica Tendencia Urbana — Iniciar Sesión</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="inicio.css/estilos.css">
+    <link rel="stylesheet" href="inicio.css/footer.css">
+    <link rel="stylesheet" href="inicio.css/auth.css">
+</head>
+<body class="auth-pagina">
+
+<!-- ===== LOGIN ===== -->
+<section class="auth-seccion">
+    <div class="auth-card">
+
+        <a href="index.html" class="auth-logo-link">ÓPTICA TENDENCIA URBANA</a>
+
+        <h1 class="auth-titulo">Iniciar Sesión</h1>
+        <div class="auth-linea"></div>
+
+        <div class="auth-msg" id="authMsg" role="alert"></div>
+
+        <div class="campo">
+            <label for="loginCorreo">Correo electrónico</label>
+            <input type="email" id="loginCorreo" placeholder="correo@ejemplo.com" autocomplete="email">
+            <span class="campo-error" id="errCorreo"></span>
+        </div>
+
+        <div class="campo">
+            <label for="loginPassword">Contraseña</label>
+            <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password">
+            <span class="campo-error" id="errPassword"></span>
+        </div>
+
+        <button class="btn-auth" id="btnLogin" type="button">ENTRAR</button>
+
+        <div class="auth-sep">o</div>
+
+        <div class="auth-pie">
+            ¿No tienes cuenta?
+            <a href="registro.html">Regístrate aquí</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="pie">
+    <div class="pie-contenedor">
+        <div class="pie-columna">
+            <h3>ÓPTICA TENDENCIA URBANA</h3>
+            <p>Lentes modernos, calidad garantizada y estilo urbano.</p>
+        </div>
+        <div class="pie-columna">
+            <h4>Tienda</h4>
+            <a href="catalogo.html">Catálogo</a>
+            <a href="#">Novedades</a>
+            <a href="#">Ofertas</a>
+        </div>
+        <div class="pie-columna">
+            <h4>Ayuda</h4>
+            <a href="contacto.html">Contacto</a>
+            <a href="#">Envíos</a>
+            <a href="#">Devoluciones</a>
+            <a href="#">Privacidad</a>
+        </div>
+        <div class="pie-columna">
+            <h4>Suscríbete</h4>
+            <form class="suscripcion" novalidate>
+                <input type="email" placeholder="correo@gmail.com">
+                <button type="submit">OK</button>
+            </form>
+        </div>
+    </div>
+    <div class="pie-inferior">
+        <p>© 2026 Óptica Tendencia Urbana · Todos los derechos reservados</p>
+    </div>
+</footer>
+
+<script src="inicio.js/db.js"></script>
+<script>
+    DB.init();
+
+    if (DB.sesionActual()) window.location.href = 'index.html';
+
+    const btnLogin    = document.getElementById('btnLogin');
+    const inputCorreo = document.getElementById('loginCorreo');
+    const inputPass   = document.getElementById('loginPassword');
+    const errCorreo   = document.getElementById('errCorreo');
+    const errPassword = document.getElementById('errPassword');
+    const authMsg     = document.getElementById('authMsg');
+
+    function limpiarErrores() {
+        [inputCorreo, inputPass].forEach(i => i.classList.remove('error'));
+        errCorreo.textContent = '';
+        errPassword.textContent = '';
+        authMsg.className = 'auth-msg';
+        authMsg.textContent = '';
+    }
+
+    function mostrarMsg(texto, tipo) {
+        authMsg.textContent = texto;
+        authMsg.className = 'auth-msg show ' + tipo;
+    }
+
+    function validar() {
+        let ok = true;
+        if (!inputCorreo.value.trim()) {
+            inputCorreo.classList.add('error');
+            errCorreo.textContent = 'El correo es obligatorio.';
+            ok = false;
+        }
+        if (!inputPass.value) {
+            inputPass.classList.add('error');
+            errPassword.textContent = 'La contraseña es obligatoria.';
+            ok = false;
+        }
+        return ok;
+    }
+
+    btnLogin.addEventListener('click', async () => {
+        limpiarErrores();
+        if (!validar()) return;
+
+        btnLogin.classList.add('cargando');
+        btnLogin.textContent = 'VERIFICANDO...';
+
+        const resultado = await DB.login(inputCorreo.value, inputPass.value);
+
+        btnLogin.classList.remove('cargando');
+        btnLogin.textContent = 'ENTRAR';
+
+        if (resultado.ok) {
+            mostrarMsg('✓ ' + resultado.mensaje, 'ok');
+            setTimeout(() => window.location.href = 'index.html', 1200);
+        } else {
+            mostrarMsg('✗ ' + resultado.mensaje, 'fallo');
+        }
+    });
+
+    [inputCorreo, inputPass].forEach(el => {
+        el.addEventListener('keydown', e => { if (e.key === 'Enter') btnLogin.click(); });
+    });
+</script>
+</body>
+</html>
