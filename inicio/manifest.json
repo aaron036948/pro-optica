@@ -1,21 +1,162 @@
 {
-  "name": "optica Tendencia Urbana",
-  "short_name": "optica",
+  "name": "Óptica Tendencia Urbana",
+  "short_name": "Óptica TU",
+  "description": "Lentes modernos, calidad garantizada y estilo urbano.",
   "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#ff0000",
+  "theme_color": "#1a1a1a",
+  "orientation": "portrait-primary",
+  "lang": "es",
+  "categories": [
+    "shopping",
+    "lifestyle"
+  ],
   "icons": [
     {
-      "src": "./img/icono/appPequeño.png",
-      "sizes": "192x192",
-      "type": "image/png"
+      "src": "img/android/launchericon-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
     },
-
     {
-      "src": "./img/icono/app.png",
+      "src": "img/android/launchericon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "img/android/launchericon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "img/android/launchericon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "img/android/launchericon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "img/android/launchericon-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "img/windows/Square44x44Logo.scale-100.png",
+      "sizes": "44x44",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "img/windows/Square44x44Logo.scale-200.png",
+      "sizes": "88x88",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "img/windows/SmallTile.scale-100.png",
+      "sizes": "71x71",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "img/windows/StoreLogo.scale-100.png",
+      "sizes": "50x50",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "img/windows/Square150x150Logo.scale-100.png",
+      "sizes": "150x150",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "img/windows/Square150x150Logo.scale-200.png",
+      "sizes": "300x300",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "img/windows/Wide310x150Logo.scale-100.png",
+      "sizes": "310x150",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "img/windows/LargeTile.scale-100.png",
+      "sizes": "310x310",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "img/windows/SplashScreen.scale-100.png",
+      "sizes": "620x300",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "img/android/launchericon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Vista Móvil de Óptica TU"
+    },
+    {
+      "src": "img/windows/SplashScreen.scale-100.png",
+      "sizes": "620x300",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Vista de Escritorio de Óptica TU"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Catálogo",
+      "short_name": "Catálogo",
+      "description": "Ver todos los productos",
+      "url": "./catalogo.html",
+      "icons": [
+        {
+          "src": "img/android/launchericon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Femenino",
+      "short_name": "Femenino",
+      "description": "Gafas para mujer",
+      "url": "./catalogo-FEMENINO.html",
+      "icons": [
+        {
+          "src": "img/android/launchericon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Masculino",
+      "short_name": "Masculino",
+      "description": "Gafas para hombre",
+      "url": "./catalogo-MASCULINO.html",
+      "icons": [
+        {
+          "src": "img/android/launchericon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
     }
   ]
 }
