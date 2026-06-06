@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Óptica Tendencia Urbana — Crear Cuenta</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="inicio.css/estilos.css">
+    <link rel="stylesheet" href="inicio.css/footer.css">
+    <link rel="stylesheet" href="inicio.css/auth.css">
+</head>
+<body class="auth-pagina">
+
+<!-- ===== REGISTRO ===== -->
+<section class="auth-seccion">
+    <div class="auth-card auth-card--registro">
+
+        <a href="index.html" class="auth-logo-link">ÓPTICA TENDENCIA URBANA</a>
+
+        <h1 class="auth-titulo">Crear Cuenta</h1>
+        <p class="auth-subtitulo">Únete a Óptica Tendencia Urbana</p>
+        <div class="auth-linea"></div>
+
+        <div class="auth-msg" id="authMsg" role="alert"></div>
+
+        <!-- Nombre completo -->
+        <div class="campo">
+            <label for="regNombre">Nombre completo</label>
+            <input type="text" id="regNombre" placeholder="Tu nombre y apellido" autocomplete="name">
+            <span class="campo-error" id="errNombre"></span>
+        </div>
+
+        <!-- Correo + Teléfono en fila -->
+        <div class="campos-fila">
+            <div class="campo">
+                <label for="regCorreo">Correo electrónico</label>
+                <input type="email" id="regCorreo" placeholder="correo@ejemplo.com" autocomplete="email">
+                <span class="campo-error" id="errCorreo"></span>
+            </div>
+            <div class="campo">
+                <label for="regTelefono">Teléfono</label>
+                <input type="tel" id="regTelefono" placeholder="+591 70000000" autocomplete="tel">
+                <span class="campo-error" id="errTelefono"></span>
+            </div>
+        </div>
+
+        <!-- Contraseña -->
+        <div class="campo">
+            <label for="regPassword">Contraseña</label>
+            <input type="password" id="regPassword" placeholder="Mínimo 6 caracteres" autocomplete="new-password">
+            <div class="fortaleza-barra" id="fortBarra">
+                <span id="fb1"></span>
+                <span id="fb2"></span>
+                <span id="fb3"></span>
+                <span id="fb4"></span>
+            </div>
+            <div class="fortaleza-texto" id="fortTexto"></div>
+            <span class="campo-error" id="errPassword"></span>
+        </div>
+
+        <!-- Confirmar contraseña -->
+        <div class="campo">
+            <label for="regConfirm">Confirmar contraseña</label>
+            <input type="password" id="regConfirm" placeholder="Repite tu contraseña" autocomplete="new-password">
+            <span class="campo-error" id="errConfirm"></span>
+        </div>
+
+        <!-- Términos -->
+        <div class="terminos">
+            <input type="checkbox" id="terminos">
+            <label for="terminos">
+                Acepto los <a href="#">Términos y condiciones</a> y la
+                <a href="#">Política de privacidad</a> de Óptica Tendencia Urbana.
+            </label>
+        </div>
+
+        <button class="btn-auth" id="btnRegistrar" type="button">CREAR CUENTA</button>
+
+        <div class="auth-sep">o</div>
+
+        <div class="auth-pie">
+            ¿Ya tienes cuenta?
+            <a href="login.html">Inicia sesión aquí</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="pie">
+    <div class="pie-contenedor">
+        <div class="pie-columna">
+            <h3>ÓPTICA TENDENCIA URBANA</h3>
+            <p>Lentes modernos, calidad garantizada y estilo urbano.</p>
+        </div>
+        <div class="pie-columna">
+            <h4>Tienda</h4>
+            <a href="catalogo.html">Catálogo</a>
+            <a href="#">Novedades</a>
+            <a href="#">Ofertas</a>
+        </div>
+        <div class="pie-columna">
+            <h4>Ayuda</h4>
+            <a href="contacto.html">Contacto</a>
+            <a href="#">Envíos</a>
+            <a href="#">Devoluciones</a>
+            <a href="#">Privacidad</a>
+        </div>
+        <div class="pie-columna">
+            <h4>Suscríbete</h4>
+            <form class="suscripcion" novalidate>
+                <input type="email" placeholder="correo@gmail.com">
+                <button type="submit">OK</button>
+            </form>
+        </div>
+    </div>
+    <div class="pie-inferior">
+        <p>© 2026 Óptica Tendencia Urbana · Todos los derechos reservados</p>
+    </div>
+</footer>
+
+<script src="inicio.js/db.js"></script>
+<script>
+    DB.init();
+
+    if (DB.sesionActual()) window.location.href = 'index.html';
+
+    const btnReg      = document.getElementById('btnRegistrar');
+    const fNombre     = document.getElementById('regNombre');
+    const fCorreo     = document.getElementById('regCorreo');
+    const fTel        = document.getElementById('regTelefono');
+    const fPass       = document.getElementById('regPassword');
+    const fConfirm    = document.getElementById('regConfirm');
+    const chkTerminos = document.getElementById('terminos');
+    const authMsg     = document.getElementById('authMsg');
+
+    const errNombre   = document.getElementById('errNombre');
+    const errCorreo   = document.getElementById('errCorreo');
+    const errTelefono = document.getElementById('errTelefono');
+    const errPassword = document.getElementById('errPassword');
+    const errConfirm  = document.getElementById('errConfirm');
+
+    /* Fortaleza de contraseña */
+    const colores = ['#e63946', '#ff9800', '#fdd835', '#43a047'];
+
+    fPass.addEventListener('input', () => {
+        const val = fPass.value;
+        let pts = 0;
+        if (val.length >= 6)           pts++;
+        if (/[A-Z]/.test(val))         pts++;
+        if (/[0-9]/.test(val))         pts++;
+        if (/[^A-Za-z0-9]/.test(val))  pts++;
+
+        const etiquetas = ['', 'Débil', 'Regular', 'Fuerte', 'Muy fuerte'];
+        ['fb1','fb2','fb3','fb4'].forEach((id, i) => {
+            document.getElementById(id).style.background = i < pts ? colores[pts - 1] : '#ccc';
+        });
+        document.getElementById('fortTexto').textContent = pts > 0 ? etiquetas[pts] : '';
+    });
+
+    function limpiar() {
+        [fNombre, fCorreo, fTel, fPass, fConfirm].forEach(i => i.classList.remove('error'));
+        [errNombre, errCorreo, errTelefono, errPassword, errConfirm].forEach(e => e.textContent = '');
+        authMsg.className = 'auth-msg';
+        authMsg.textContent = '';
+    }
+
+    function mostrarMsg(texto, tipo) {
+        authMsg.textContent = texto;
+        authMsg.className = 'auth-msg show ' + tipo;
+    }
+
+    function validar() {
+        let ok = true;
+        if (!fNombre.value.trim()) {
+            fNombre.classList.add('error');
+            errNombre.textContent = 'El nombre es obligatorio.';
+            ok = false;
+        }
+        const emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailReg.test(fCorreo.value.trim())) {
+            fCorreo.classList.add('error');
+            errCorreo.textContent = 'Ingresa un correo válido.';
+            ok = false;
+        }
+        if (!fTel.value.trim()) {
+            fTel.classList.add('error');
+            errTelefono.textContent = 'El teléfono es obligatorio.';
+            ok = false;
+        }
+        if (fPass.value.length < 6) {
+            fPass.classList.add('error');
+            errPassword.textContent = 'Mínimo 6 caracteres.';
+            ok = false;
+        }
+        if (fPass.value !== fConfirm.value) {
+            fConfirm.classList.add('error');
+            errConfirm.textContent = 'Las contraseñas no coinciden.';
+            ok = false;
+        }
+        if (!chkTerminos.checked) {
+            mostrarMsg('✗ Debes aceptar los términos y condiciones.', 'fallo');
+            ok = false;
+        }
+        return ok;
+    }
+
+    btnReg.addEventListener('click', async () => {
+        limpiar();
+        if (!validar()) return;
+
+        btnReg.classList.add('cargando');
+        btnReg.textContent = 'GUARDANDO...';
+
+        const resultado = await DB.registrar({
+            nombre:   fNombre.value,
+            correo:   fCorreo.value,
+            password: fPass.value,
+            telefono: fTel.value
+        });
+
+        btnReg.classList.remove('cargando');
+        btnReg.textContent = 'CREAR CUENTA';
+
+        if (resultado.ok) {
+            mostrarMsg('✓ Cuenta creada correctamente. Redirigiendo al login...', 'ok');
+            setTimeout(() => window.location.href = 'login.html', 1800);
+        } else {
+            mostrarMsg('✗ ' + resultado.mensaje, 'fallo');
+        }
+    });
+
+    fConfirm.addEventListener('keydown', e => { if (e.key === 'Enter') btnReg.click(); });
+</script>
+</body>
+</html>
